@@ -3,52 +3,53 @@
 
 .colorPaletteMixin() {
     @functions: ~`(function() {
-      var hueStep = 2;
-      var maxSaturationStep = 100;
-      var minSaturationStep = 9;
-      var maxValue = 100;
-      var minValue = 30;
+  var hueStep = 2;
+  var maxSaturationStep = 100;
+  var minSaturationStep = 9;
+  var maxValue = 100;
+  var minValue = 30;
 
-      var getHue = function(hsv, i, isLight) {
-        var hue;
-        if (hsv.h >= 60 && hsv.h <= 240) {
-          hue = isLight ? hsv.h - hueStep * i : hsv.h + hueStep * i;
-        } else {
-          hue = isLight ? hsv.h + hueStep * i : hsv.h - hueStep * i;
-        }
-        if (hue < 0) {
-          hue += 360;
-        } else if (hue >= 360) {
-          hue -= 360;
-        }
-        return Math.round(hue);
-      };
-      var getSaturation = function(hsv, i, isLight) {
-        var newSaturation;
-        if (isLight) {
-          newSaturation = hsv.s <= minSaturationStep ? hsv.s : hsv.s - ((hsv.s - minSaturationStep) / 5) * i;
-        } else {
-          newSaturation = hsv.s + ((maxSaturationStep - s) / 4) * i;
-        }
-        return newSaturation;
-      };
-      var getValue = function(hsv, i, isLight) {
-        return isLight ? hsv.v + ((maxValue - v) / 5) * i : (hsv.v <= minValue ? hsv.v : hsv.v - ((hsv.v - minValue) / 4) * i);
-      };
+  var getHue = function(hsv, i, isLight) {
+    var hue;
+    if (hsv.h >= 60 && hsv.h <= 240) {
+      hue = isLight ? hsv.h - hueStep * i : hsv.h + hueStep * i;
+    } else {
+      hue = isLight ? hsv.h + hueStep * i : hsv.h - hueStep * i;
+    }
+    if (hue < 0) {
+      hue += 360;
+    } else if (hue >= 360) {
+      hue -= 360;
+    }
+    return Math.round(hue);
+  };
+  var getSaturation = function(hsv, i, isLight) {
+    var newSaturation;
+    if (isLight) {
+      newSaturation = hsv.s <= minSaturationStep ? hsv.s : hsv.s - ((hsv.s - minSaturationStep) / 5) * i;
+    } else {
+      newSaturation = hsv.s + ((maxSaturationStep - s) / 4) * i;
+    }
+    return Math.round(newSaturation);
+  };
+  var getValue = function(hsv, i, isLight) {
+    var newV = isLight ? hsv.v + ((maxValue - v) / 5) * i : (hsv.v <= minValue ? hsv.v : hsv.v - ((hsv.v - minValue) / 4) * i);
+    return Math.round(newV);
+  };
 
-      this.colorPalette = function(color, index) {
-        var isLight = index < 6;
-        var i = isLight ? 6 - index : index - 6;
-        var hsv = tinycolor(color).toHsv();
-        if (index === 6) {
-          return tinycolor(color).toHexString();
-        }
-        return tinycolor({
-          h: getHue(hsv, i, isLight),
-          s: getSaturation(hsv, i, isLight),
-          v: getValue(hsv, i, isLight),
-        }).toHexString();
-      };
+  this.colorPalette = function(color, index) {
+    var isLight = index < 6;
+    var i = isLight ? 6 - index : index - 6;
+    var hsv = tinycolor(color).toHsv();
+    if (index === 6) {
+      return tinycolor(color).toHexString();
+    }
+    return tinycolor({
+      h: getHue(hsv, i, isLight),
+      s: getSaturation(hsv, i, isLight),
+      v: getValue(hsv, i, isLight),
+    }).toHexString();
+  };
   })()`;
 }
 
