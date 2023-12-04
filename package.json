@@ -4,8 +4,7 @@
     "title": "iviewStyle",
     "description": "",
     "homepage": "http://www.iviewui.com",
-    "keywords": [
-    ],
+    "keywords": [],
     "files": [
         "dist",
         "src",
@@ -18,7 +17,7 @@
     },
     "author": "",
     "license": "MIT",
-    "dependencies": {},
-    "devDependencies": {}
+    "dependencies": {
+        "color": "^4.2.3"
+    }
 }
-
