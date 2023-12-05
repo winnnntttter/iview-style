@@ -16,11 +16,5 @@
         "url": "https://github.com/winnnntttter/iview-style"
     },
     "author": "",
-    "license": "MIT",
-    "dependencies": {
-        "tinycolor2": "^1.6.0"
-    },
-    "devDependencies": {
-        "less": "^4.1.3"
-    }
+    "license": "MIT"
 }
