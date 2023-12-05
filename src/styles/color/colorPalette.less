@@ -25,15 +25,17 @@
   };
   var getSaturation = function(hsv, i, isLight) {
     var newSaturation;
+    var oldS = hsv.s * 100;
     if (isLight) {
-      newSaturation = hsv.s <= minSaturationStep ? hsv.s : hsv.s - ((hsv.s - minSaturationStep) / 5) * i;
+      newSaturation = oldS <= minSaturationStep ? oldS : oldS - ((oldS - minSaturationStep) / 5) * i;
     } else {
-      newSaturation = hsv.s + ((maxSaturationStep - s) / 4) * i;
+      newSaturation = oldS + ((maxSaturationStep - oldS) / 4) * i;
     }
     return Math.round(newSaturation);
   };
   var getValue = function(hsv, i, isLight) {
-    var newV = isLight ? hsv.v + ((maxValue - v) / 5) * i : (hsv.v <= minValue ? hsv.v : hsv.v - ((hsv.v - minValue) / 4) * i);
+    var oldV = hsv.v * 100;
+    var newV = isLight ? oldV + ((maxValue - oldV) / 5) * i : (oldV <= minValue ? oldV : oldV - ((oldV - minValue) / 4) * i);
     return Math.round(newV);
   };
 
