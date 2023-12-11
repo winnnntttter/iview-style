@@ -31,12 +31,12 @@
     } else {
       newSaturation = oldS + ((maxSaturationStep - oldS) / 4) * i;
     }
-    return Math.round(newSaturation);
+    return newSaturation;
   };
   var getValue = function(hsv, i, isLight) {
     var oldV = hsv.v * 100;
     var newV = isLight ? oldV + ((maxValue - oldV) / 5) * i : (oldV <= minValue ? oldV : oldV - ((oldV - minValue) / 4) * i);
-    return Math.round(newV);
+    return newV;
   };
 
   this.colorPalette = function(color, index) {

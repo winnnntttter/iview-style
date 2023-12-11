@@ -60,10 +60,6 @@
         }
     }
 
-    //&-ghost {
-    //    .btn-ghost;
-    //}
-
     &-dashed{
         .btn-dashed;
     }
@@ -73,19 +69,19 @@
     }
 
     &-success {
-        .btn-color(@success-color);
+        .btn-normal(@success-color);
     }
 
     &-warning {
-        .btn-color(@warning-color);
+        .btn-normal(@warning-color);
     }
 
     &-error {
-        .btn-color(@error-color);
+        .btn-normal(@error-color);
     }
 
     &-info {
-        .btn-color(@info-color);
+        .btn-normal(@info-color);
     }
 
     &-circle,
@@ -138,42 +134,42 @@
         color: #fff;
         border-color: #fff;
         &:hover{
-            color: tint(@primary-color, 20%);
-            border-color: tint(@primary-color, 20%);
+            color: color(~`colorPalette('@{primary-color}', 5) `);
+            border-color: color(~`colorPalette('@{primary-color}', 5) `);
         }
     }
     &-ghost&-primary{
         color: @primary-color;
         &:hover{
-            color: tint(@primary-color, 20%);
+            color: color(~`colorPalette('@{primary-color}', 5) `);
             background: fade(tint(@primary-color, 95%), 50%);
         }
     }
     &-ghost&-info{
         color: @info-color;
         &:hover{
-            color: tint(@info-color, 20%);
+            color: color(~`colorPalette('@{info-color}', 5) `);
             background: fade(tint(@info-color, 95%), 50%);
         }
     }
     &-ghost&-success{
         color: @success-color;
         &:hover{
-            color: tint(@success-color, 20%);
+            color: color(~`colorPalette('@{success-color}', 5) `);
             background: fade(tint(@success-color, 95%), 50%);
         }
     }
     &-ghost&-warning{
         color: @warning-color;
         &:hover{
-            color: tint(@warning-color, 20%);
+            color: color(~`colorPalette('@{warning-color}', 5) `);
             background: fade(tint(@warning-color, 95%), 50%);
         }
     }
     &-ghost&-error{
         color: @error-color;
         &:hover{
-            color: tint(@error-color, 20%);
+            color: color(~`colorPalette('@{error-color}', 5) `);
             background: fade(tint(@error-color, 95%), 50%);
         }
     }
