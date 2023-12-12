@@ -2,12 +2,19 @@
     "name": "iview-style",
     "version": "0.0.1",
     "title": "iviewStyle",
-    "description": "A high quality UI components Library with Vue.js 3",
+    "description": "",
+    "homepage": "http://www.iviewui.com",
+    "keywords": [],
+    "files": [
+        "dist",
+        "src",
+        "types"
+    ],
     "scripts": {},
-    "repository": {},
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/winnnntttter/iview-style"
+    },
     "author": "",
-    "license": "MIT",
-    "dependencies": {},
-    "devDependencies": {}
+    "license": "MIT"
 }
-
