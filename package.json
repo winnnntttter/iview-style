@@ -1,0 +1,13 @@
+{
+    "name": "iview-style",
+    "version": "0.0.1",
+    "title": "iviewStyle",
+    "description": "A high quality UI components Library with Vue.js 3",
+    "scripts": {},
+    "repository": {},
+    "author": "",
+    "license": "MIT",
+    "dependencies": {},
+    "devDependencies": {}
+}
+
