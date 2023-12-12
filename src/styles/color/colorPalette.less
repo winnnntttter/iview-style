@@ -16,6 +16,7 @@
     } else {
       hue = isLight ? hsv.h + hueStep * i : hsv.h - hueStep * i;
     }
+    // 色相变化 正负 2 * i
     if (hue < 0) {
       hue += 360;
     } else if (hue >= 360) {
@@ -27,14 +28,18 @@
     var newSaturation;
     var oldS = hsv.s * 100;
     if (isLight) {
+      // 原值 - （原值减9，再除以5，再乘以i）
       newSaturation = oldS <= minSaturationStep ? oldS : oldS - ((oldS - minSaturationStep) / 5) * i;
     } else {
+      // 原值 + （100减原值，再除以4，再乘以i）
       newSaturation = oldS + ((maxSaturationStep - oldS) / 4) * i;
     }
     return newSaturation;
   };
   var getValue = function(hsv, i, isLight) {
     var oldV = hsv.v * 100;
+    // isLight 原值 + （100减原值，再除以5，再乘以i）
+    // !isLight 原值 - （原值减30，再除以4，再乘以i）
     var newV = isLight ? oldV + ((maxValue - oldV) / 5) * i : (oldV <= minValue ? oldV : oldV - ((oldV - minValue) / 4) * i);
     return newV;
   };
@@ -57,3 +62,6 @@
 
 .colorPaletteMixin();
 
+// index < 6 i=6-index 原色相在60-240之间时，新色相为原色相减去2 * i，否则为原色相加上2 * i 饱和度：原值 - （原值减9，再除以5，再乘以i） 明度：原值 + （100减原值，再除以5，再乘以i）
+
+// index > 6 i=index-6 原色相在60-240之间时，新色相为原色相加上2 * i，否则为原色相减去2 * i 饱和度：原值 + （100减原值，再除以4，再乘以i） 明度：原值 - （原值减30，再除以4，再乘以i）

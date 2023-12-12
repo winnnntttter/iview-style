@@ -18,6 +18,7 @@
     } else {
       hue = isLight ? hsv.h + hueStep * i : hsv.h - hueStep * i;
     }
+    // 色相变化 正负 2 * i
     if (hue < 0) {
       hue += 360;
     } else if (hue >= 360) {
@@ -34,6 +35,7 @@
     } else {
       saturation = Math.round(hsv.s * 100) + saturationStep2 * i;
     }
+    // 饱和度变化 正负 16 * i或者5 * i
     if (saturation > 100) {
       saturation = 100;
     }
@@ -46,6 +48,7 @@
     return Math.round(saturation);
   };
   var getValue = function(hsv, i, isLight) {
+    // 明度变化 正负 5 * i或者15 * i
     if (isLight) {
       return Math.round(hsv.v * 100) + brightnessStep1 * i;
     }
@@ -68,4 +71,3 @@
 // resolve error: `ReferenceError: colorPalette is not defined`
 // https://github.com/ant-design/ant-motion/issues/44
 .colorPaletteMixin();
-
