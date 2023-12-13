@@ -1,0 +1,20 @@
+{
+    "name": "iview-style",
+    "version": "0.0.1",
+    "title": "iviewStyle",
+    "description": "",
+    "homepage": "http://www.iviewui.com",
+    "keywords": [],
+    "files": [
+        "dist",
+        "src",
+        "types"
+    ],
+    "scripts": {},
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/winnnntttter/iview-style"
+    },
+    "author": "",
+    "license": "MIT"
+}

@@ -1,20 +1,13 @@
-/* stylelint-disable no-duplicate-selectors */
-@import "bezierEasing";
-@import "tinyColor";
+@import 'bezierEasing';
+@import 'tinyColor';
 
-// We create a very complex algorithm which take the place of original tint/shade color system
-// to make sure no one can understand it 👻
-// and create an entire color palette magicly by inputing just a single primary color.
-// We are using bezier-curve easing function and some color manipulations like tint/shade/darken/spin
 .colorPaletteMixin() {
-@functions: ~`(function() {
+    @functions: ~`(function() {
   var hueStep = 2;
-  var saturationStep = 16;
-  var saturationStep2 = 5;
-  var brightnessStep1 = 5;
-  var brightnessStep2 = 15;
-  var lightColorCount = 5;
-  var darkColorCount = 4;
+  var maxSaturationStep = 100;
+  var minSaturationStep = 9;
+  var maxValue = 100;
+  var minValue = 30;
 
   var getHue = function(hsv, i, isLight) {
     var hue;
@@ -23,6 +16,7 @@
     } else {
       hue = isLight ? hsv.h + hueStep * i : hsv.h - hueStep * i;
     }
+    // 色相变化 正负 2 * i
     if (hue < 0) {
       hue += 360;
     } else if (hue >= 360) {
@@ -31,45 +25,43 @@
     return Math.round(hue);
   };
   var getSaturation = function(hsv, i, isLight) {
-    var saturation;
+    var newSaturation;
+    var oldS = hsv.s * 100;
     if (isLight) {
-      saturation = Math.round(hsv.s * 100) - saturationStep * i;
-    } else if (i == darkColorCount) {
-      saturation = Math.round(hsv.s * 100) + saturationStep;
+      // 原值 - （原值减9，再除以5，再乘以i）
+      newSaturation = oldS <= minSaturationStep ? oldS : oldS - ((oldS - minSaturationStep) / 5) * i;
     } else {
-      saturation = Math.round(hsv.s * 100) + saturationStep2 * i;
+      // 原值 + （100减原值，再除以4，再乘以i）
+      newSaturation = oldS + ((maxSaturationStep - oldS) / 4) * i;
     }
-    if (saturation > 100) {
-      saturation = 100;
-    }
-    if (isLight && i === lightColorCount && saturation > 10) {
-      saturation = 10;
-    }
-    if (saturation < 6) {
-      saturation = 6;
-    }
-    return Math.round(saturation);
+    return newSaturation;
   };
   var getValue = function(hsv, i, isLight) {
-    if (isLight) {
-      return Math.round(hsv.v * 100) + brightnessStep1 * i;
-    }
-    return Math.round(hsv.v * 100) - brightnessStep2 * i;
+    var oldV = hsv.v * 100;
+    // isLight 原值 + （100减原值，再除以5，再乘以i）
+    // !isLight 原值 - （原值减30，再除以4，再乘以i）
+    var newV = isLight ? oldV + ((maxValue - oldV) / 5) * i : (oldV <= minValue ? oldV : oldV - ((oldV - minValue) / 4) * i);
+    return newV;
   };
 
   this.colorPalette = function(color, index) {
-    var isLight = index <= 6;
+    var isLight = index < 6;
+    var i = isLight ? 6 - index : index - 6;
     var hsv = tinycolor(color).toHsv();
-    var i = isLight ? lightColorCount + 1 - index : index - lightColorCount - 1;
+    if (index === 6) {
+      return tinycolor(color).toHexString();
+    }
     return tinycolor({
       h: getHue(hsv, i, isLight),
       s: getSaturation(hsv, i, isLight),
       v: getValue(hsv, i, isLight),
     }).toHexString();
   };
-})()`;
+  })()`;
 }
-// It is hacky way to make this function will be compiled preferentially by less
-// resolve error: `ReferenceError: colorPalette is not defined`
-// https://github.com/ant-design/ant-motion/issues/44
+
 .colorPaletteMixin();
+
+// index < 6 i=6-index 原色相在60-240之间时，新色相为原色相减去2 * i，否则为原色相加上2 * i 饱和度：原值 - （原值减9，再除以5，再乘以i） 明度：原值 + （100减原值，再除以5，再乘以i）
+
+// index > 6 i=index-6 原色相在60-240之间时，新色相为原色相加上2 * i，否则为原色相减去2 * i 饱和度：原值 + （100减原值，再除以4，再乘以i） 明度：原值 - （原值减30，再除以4，再乘以i）

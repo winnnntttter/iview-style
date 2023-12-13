@@ -118,12 +118,12 @@
         }
 
         &:hover{
-            background: tint(@primary-color, 20%) !important;
-            border-color: tint(@primary-color, 20%) !important;
+            background: @brand3 !important;
+            border-color: @brand3 !important;
         }
         &:active{
-            background: shade(@primary-color, 5%) !important;
-            border-color: shade(@primary-color, 5%) !important;
+            background: @brand5 !important;
+            border-color: @brand5 !important;
         }
 
         &-icon{
@@ -160,7 +160,7 @@
     &-with-search{
         &:hover{
             .@{input-prefix-cls} {
-                border-color: tint(@primary-color, 20%);
+                border-color: @brand3;
             }
         }
     }
