@@ -30,6 +30,7 @@
 }
 
 .ivu-table {
+  color: @fontGy1;
   &:before {
     background-color: @Gy6;
   }
@@ -70,13 +71,58 @@
 }
 
 // 小表格
-.ivu-table-small {
-  td {
-    height: 36px;
-    line-height: 20px;
+.ivu-table-sm {
+  th,
+  td,
+  thead tr th {
+      height: 36px;
   }
 }
 
+// 前台表格
+.ivu-table-frontend {
+  th,
+  td,
+  thead tr th {
+    height: unset;
+  }
+  .ivu-table-cell {
+    padding: 12px;
+    line-height: 22px;
+  }
+  a + a,
+  a + .ivu-poptip,
+  .ivu-poptip + a,
+  .ivu-tooltip + a,
+  .ivu-tooltip + .ivu-tooltip,
+  a + .ivu-tooltip {
+    margin-left: 16px;
+  }
+}
+
+// 大表格
+.ivu-table-lg {
+  .ivu-table-cell, .ivu-checkbox-wrapper {
+    font-size: 16px;
+  }
+  th,
+  td,
+  thead tr th {
+    height: unset;
+  }
+  .ivu-table-cell {
+    padding: 20px 16px;
+    line-height: 24px;
+  }
+  a + a,
+  a + .ivu-poptip,
+  .ivu-poptip + a,
+  .ivu-tooltip + a,
+  .ivu-tooltip + .ivu-tooltip,
+  a + .ivu-tooltip {
+    margin-left: 16px;
+  }
+}
 
 
 // 自定义表格（使用原生html而非iview组件）
