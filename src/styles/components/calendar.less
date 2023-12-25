@@ -46,7 +46,7 @@
             transition: background-color @transition-time @ease-in-out;
             cursor: pointer;
             &:hover{
-                background-color: ~`colorPalette("@{primary-color}", 1)`;
+                background-color: @primary-1;
             }
             &-other{
                 .ivu-calendar-table-day-title{
@@ -57,7 +57,7 @@
                 .ivu-calendar-table-day-title{
                     color: @primary-color;
                 }
-                background-color: ~`colorPalette("@{primary-color}", 1)`;
+                background-color: @primary-1;
             }
         }
     }

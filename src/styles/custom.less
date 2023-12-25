@@ -1,7 +1,7 @@
 @import "color/colors";
 
 // 品牌色-主色
-@primary-base: #0052d9;
+@primary-base: #1677ff;
 // 根据配置项生成的变量
 // 品牌色梯度(自动生成)
 @primary-1              : color(~`colorPalette('@{primary-base}', 1) `);
@@ -17,7 +17,7 @@
 
 // 品牌色梯度(由设计师提供)
 @brand1:  @primary-1;
-@brand2:  @primary-3;
+@brand2:  @primary-2;
 @brand3:  @primary-5;
 @brand4:  @primary-6;
 @brand5:  @primary-7;
@@ -25,25 +25,25 @@
 
 
 //通用色-灰度颜色
-@fontGy1: #13161B;
-@fontGy2: #60656E;
-@fontGy3: #8D949F;
-@fontGy4: #B7BCC4;
-@Gy5: #D5D7DB;
-@Gy6: #E8EAED;
-@Gy7: #F2F3F5;
-@Gy8: #F7F8FA;
+@fontGy1: #2b2e33;
+@fontGy2: #65696e;
+@fontGy3: #93989e;
+@fontGy4: #b3b7bd;
+@Gy5: #d5d7db;
+@Gy6: #e8eaed;
+@Gy7: #f2f3f5;
+@Gy8: #f7f8fa;
 @bgColor: @Gy8; // body背景色，可以修改也可以和Gy8保持一致
 
 
 // 信息色
-@info-base: #2db7f5;
+@info-base: #1677ff;
 // 成功色
-@success-base: #19be6b;
+@success-base: #2ba471;
 // 警告色
-@warning-base: #ff9900;
+@warning-base: #faa614;
 // 错误色
-@error-base: #ed4014;
+@error-base: #f93b3b;
 
 @info-1                 : color(~`colorPalette('@{info-base}', 1) `);
 @info-2                 : color(~`colorPalette('@{info-base}', 2) `);
@@ -104,14 +104,14 @@
 @error-color            : @error-base; // 被修改
 @error-hover-color      : color(~`colorPalette('@{error-color}', 5) `);
 @error-active-color     : color(~`colorPalette('@{error-color}', 7) `);
-@normal-color           : #e6ebf1;
+@normal-color           : @Gy6;
 @link-color             : @primary-base; // 被修改
 @link-hover-color       : @brand3;
 @link-active-color      : @brand5;
 @selected-color         : @brand5;
 @tooltip-color          : #fff;
-@subsidiary-color       : #808695;
-@rate-star-color        : #f5a623;
+@subsidiary-color       : @fontGy3;
+@rate-star-color        : @warning-base;
 @white: #fff;
 @black: #000;
 
@@ -120,10 +120,10 @@
 @component-background   : #fff;
 @font-family            : "Helvetica Neue", Helvetica, "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "WenQuanYi Micro Hei", Arial, "SimSun", "sans-serif";
 @code-family            : Consolas,Menlo,Courier,monospace;
-@title-color            : #17233d;
-@text-color             : #515a6e;
-@text-color-secondary   : fade(@black, 45%);
-@heading-color          : fade(#000, 85%);
+@title-color            : @fontGy1;
+@text-color             : @fontGy2;
+@text-color-secondary   : @fontGy3;
+@heading-color          : @fontGy1;
 @heading-color-dark     : fade(@white, 100%);
 @font-size-base         : 14px;
 @font-size-small        : 12px;
@@ -204,7 +204,7 @@
 @btn-group-border       : @brand5;
 
 @btn-disable-color      : @fontGy4;
-@btn-disable-bg         : @background-color-base;
+@btn-disable-bg         : @Gy7;
 @btn-disable-border     : @border-color-base;
 
 @btn-default-color      : @text-color;
