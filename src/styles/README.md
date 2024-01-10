@@ -15,7 +15,9 @@
 ### 颜色
 1. 使用arco-design的梯度算法，老的算法在colorPalette-old.less备份
 2. 主色、信息、成功、警告、错误色按钮的hover和active使用颜色梯度5和7，代替原来的混合白色和混合黑色
-3. less常用color方法：
+3. alert 组件border颜色由梯度3改为梯度2
+4. 其他重置样式在reset.less中
+5. less常用color方法：
     - mix 混合颜色，算法：
         ```JavaScript
         function mix(color1, color2, weight) {
