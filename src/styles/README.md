@@ -48,3 +48,8 @@
     - spin HSL 的H色相旋转
     - lighten HSL 的L亮度增加
     - darken HSL 的L亮度减少
+## 使用
+- npm：删除package-lock.json 和 node_modules下的iview-style 重新npm install
+- pnpm：改变版本号的话：删除pnpm-lock.yaml 和 node_modules下的iview-style 重新pnpm install --force
+- pnpm：不改变版本号的话：pnpm store prune 删除pnpm-lock.yaml 和 node_modules下的iview-style 重新pnpm install --force
+- 本地依赖：pnpm add E:\work\dev\其他\iview-style
