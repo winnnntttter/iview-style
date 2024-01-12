@@ -1,19 +1,19 @@
 .hover(@color: @input-hover-border-color) {
-    border-color: color(~`colorPalette('@{color}', 5) `);
+    border-color: @color;
 }
 .hover-error() {
     border-color: @error-color;
 }
 
 .active(@color: @input-hover-border-color) {
-    border-color: color(~`colorPalette('@{color}', 5) `);
+    border-color: @color;
     outline: 0;
-    box-shadow: 0 0 0 2px fade(@color, 20%);
+    box-shadow: 0 0 0 2px color(~`colorPalette('@{color}', 2) `);
 }
 .active-error() {
     border-color: @error-color;
     outline: 0;
-    box-shadow: 0 0 0 2px fade(@error-color, 20%);
+    box-shadow: 0 0 0 2px color(~`colorPalette('@{error-color}', 2) `);
 }
 
 .disabled() {
